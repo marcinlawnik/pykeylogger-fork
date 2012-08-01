@@ -166,11 +166,11 @@ class DistributionBuilder:
         if self.disttype != 'stealth':
             self.build_sdist()
         
-        if self.disttype == 'nonag' or self.disttype == 'stealth':
-            self.toggle_nag('True')
+        #if self.disttype == 'nonag' or self.disttype == 'stealth':
+            #self.toggle_nag('True')
         
-        if self.disttype == 'stealth':
-            self.toggle_stealth('pykeylogger','Simple Python Keylogger', 'svchost')
+        #if self.disttype == 'stealth':
+            #self.toggle_stealth('pykeylogger','Simple Python Keylogger', 'svchost')
         
         print  "done, press enter key to exit"
         os.system(r'pause')
@@ -186,16 +186,16 @@ class DistributionBuilder:
         os.system(r'rd /S /Q dist')
 
         # create the exe 
-        print r'c:\Python25\python setup.py py2exe'
-        os.system(r'c:\Python25\python setup.py py2exe')
+        print r'c:\Python27\python setup.py py2exe'
+        os.system(r'c:\Python27\python setup.py py2exe')
 
         print r'rename "dist" "pykeylogger-' + version.version + '""'
         os.system(r'rename "dist" "pykeylogger-' + version.version + '""')
         
-        self.build_nsis_installer()
+        #self.build_nsis_installer()
         
-        print r'move ".\pykeylogger-' + version.version + r'_win32_installer.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe"'
-        os.system(r'move ".\pykeylogger-' + version.version + r'_win32_installer.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe"')
+        #print r'move ".\pykeylogger-' + version.version + r'_win32_installer.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe"'
+        #os.system(r'move ".\pykeylogger-' + version.version + r'_win32_installer.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe"')
 
         print "zipping executables"
         self.ZipFiles(r"pykeylogger-" + version.version, "pykeylogger-" + version.version + self.filename_addendum + "_win32.zip")
@@ -206,24 +206,24 @@ class DistributionBuilder:
         os.system(r'rd /S /Q build')
 
         # create md5sum
-        print r'""C:\Progra~1\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""'
-        os.system(r'""C:\Progra~1\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""')
-        print r'""C:\Progra~1\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""'
-        os.system(r'""C:\Progra~1\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""')
+        print r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""'
+        os.system(r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""')
+        print r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""'
+        os.system(r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""')
 
         # move release files out of the source dir
         print r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32.zip"'
         os.system(r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32.zip"')
 
-        print r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_installer.exe"'
-        os.system(r'move ".\pykeylogger-' + version.version + self.filename_addendum +  r'_win32_installer.exe" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_installer.exe"')
+        #print r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_installer.exe"'
+        #os.system(r'move ".\pykeylogger-' + version.version + self.filename_addendum +  r'_win32_installer.exe" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_installer.exe"')
 
         #os.system(r'pause')
     
     def build_sdist(self):
         
         print "creating sdist"
-        os.system(r'c:\Python25\python setup.py sdist')
+        os.system(r'c:\Python27\python setup.py sdist')
 
         print r'move ".\dist\pykeylogger-' + version.version + r'.zip" ".\pykeylogger-' + version.version + self.filename_addendum + '_src.zip"'
         os.system(r'move ".\dist\pykeylogger-' + version.version + r'.zip" ".\pykeylogger-' + version.version + self.filename_addendum + '_src.zip"')
@@ -234,8 +234,8 @@ class DistributionBuilder:
         os.system(r'rd /S /Q dist')
 
         #create md5sum
-        print r'""C:\Progra~1\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_src.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_src_md5sum.txt""'
-        os.system(r'""C:\Progra~1\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_src.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_src_md5sum.txt""')
+        print r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_src.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_src_md5sum.txt""'
+        os.system(r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_src.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_src_md5sum.txt""')
         
         # move release files out of source dir
         print r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_src.zip" "..\pykeylogger-' + version.version + self.filename_addendum + '_src.zip"'
@@ -243,49 +243,49 @@ class DistributionBuilder:
         
         #os.system(r'pause')
     
-    def build_nsis_installer(self):
+    #def build_nsis_installer(self):
         ''' this needs to be called before we zip and delete the renamed dist directory
         '''
-        self.update_nsis_script_version()
+        #self.update_nsis_script_version()
         
-        if self.disttype == 'stealth':
-            self.toggle_nsis_stealth_params('svchost')
+        #if self.disttype == 'stealth':
+            #self.toggle_nsis_stealth_params('svchost')
         
-        print r'"C:\Program Files\NSIS\makensis.exe" pykeylogger_install_script.nsi'
-        os.system(r'"C:\Program Files\NSIS\makensis.exe" pykeylogger_install_script.nsi')
+        #print r'"C:\Program Files\NSIS\makensis.exe" pykeylogger_install_script.nsi'
+        #os.system(r'"C:\Program Files\NSIS\makensis.exe" pykeylogger_install_script.nsi')
         
-        if self.disttype == 'stealth':
-            self.toggle_nsis_stealth_params('pykeylogger')
+        #if self.disttype == 'stealth':
+            #self.toggle_nsis_stealth_params('pykeylogger')
         
-    def update_nsis_script_version(self):
-        f = open('pykeylogger_install_script.nsi','r')
-        try:
-            contents=f.readlines()
-        finally:
-            f.close()
+    #def update_nsis_script_version(self):
+        #f = open('pykeylogger_install_script.nsi','r')
+        #try:
+            #contents=f.readlines()
+        #finally:
+            #f.close()
         
-        f = open('pykeylogger_install_script.nsi','w')
-        try:
-            for line in contents:
-                line = re.sub('^( *!define PYKEYLOGGER_VERSION ).*', '\\1' + '"' + version.version + '"', line)
-                f.write(line)
-        finally:
-            f.close()
+        #f = open('pykeylogger_install_script.nsi','w')
+        #try:
+            #for line in contents:
+                #line = re.sub('^( *!define PYKEYLOGGER_VERSION ).*', '\\1' + '"' + version.version + '"', line)
+                #f.write(line)
+        #finally:
+            #f.close()
     
-    def toggle_nsis_stealth_params(self, stealthname):
-        f = open('pykeylogger_install_script.nsi','r')
-        try:
-            contents=f.readlines()
-        finally:
-            f.close()
+    #def toggle_nsis_stealth_params(self, stealthname):
+        #f = open('pykeylogger_install_script.nsi','r')
+        #try:
+            #contents=f.readlines()
+        #finally:
+            #f.close()
         
-        f = open('pykeylogger_install_script.nsi','w')
-        try:
-            for line in contents:
-                line = re.sub('^( *!define PYKEYLOGGER_EXENAME ).*', '\\1' + '"' + stealthname + '"', line)
-                f.write(line)
-        finally:
-            f.close()
+        #f = open('pykeylogger_install_script.nsi','w')
+        #try:
+            #for line in contents:
+                #line = re.sub('^( *!define PYKEYLOGGER_EXENAME ).*', '\\1' + '"' + stealthname + '"', line)
+                #f.write(line)
+        #finally:
+            #f.close()
     
     def ZipFiles(self, targetdir, ziparchivename):
         '''Create a zip archive of all files in the target directory.
