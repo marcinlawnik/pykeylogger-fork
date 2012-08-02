@@ -206,10 +206,10 @@ class DistributionBuilder:
         os.system(r'rd /S /Q build')
 
         # create md5sum
-        print r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""'
-        os.system(r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""')
-        print r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""'
-        os.system(r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""')
+        #print r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""'
+        #os.system(r'""C:\UnixUtils\md5sum.exe" "pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" > "..\pykeylogger-' + version.version + self.filename_addendum + '_win32_md5sum.txt""')
+        #print r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""'
+        #os.system(r'""C:\UnixUtils\md5sum.exe" ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer.exe" > "..\pykeylogger-' + version.version + self.filename_addendum + r'_win32_installer_md5sum.txt""')
 
         # move release files out of the source dir
         print r'move ".\pykeylogger-' + version.version + self.filename_addendum + r'_win32.zip" "..\pykeylogger-' + version.version + self.filename_addendum + '_win32.zip"'

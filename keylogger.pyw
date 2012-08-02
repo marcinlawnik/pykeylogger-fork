@@ -434,6 +434,3 @@ class ControlKeyMonitor(threading.Thread):
 if __name__ == '__main__':
     kl = KeyLogger()
     kl.start()
-    
-    # If you want to change keylogger behavior from defaults,
-    # modify the .ini file. Also try '-h' for list of command line options.
