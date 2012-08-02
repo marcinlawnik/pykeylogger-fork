@@ -33,16 +33,13 @@ else:
     print "OS is not recognised as windows or linux."
     exit()
 
-#import imp # don't need this anymore?
 import re
 from optparse import OptionParser
 import traceback
 import version
-#import ConfigParser
 from configobj import ConfigObj, flatten_errors
 from validate import Validator
 from controlpanel import PyKeyloggerControlPanel
-#from supportscreen import SupportScreen, ExpirationScreen
 import Tkinter, tkMessageBox
 import myutils
 from Queue import Empty, Queue

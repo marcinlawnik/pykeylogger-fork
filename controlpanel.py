@@ -28,8 +28,6 @@ from configobj import ConfigObj, flatten_errors
 from validate import Validator
 import myutils
 import webbrowser
-#from supportscreen import SupportScreen
-#from supportscreen import AboutDialog
 import sys
 import version
 import os.path
@@ -164,44 +162,6 @@ class MainMenu:
                     section + ' settings', 
                     command = Command(ConfigPanel, parent, section),
                     label = section + ' Settings')
-        
-        ## don't need the following, since we are using the pmw.notebook
-        #for section in sections:
-            #if section == 'General':
-                #self.menubar.addmenuitem('Configuration', 'command',
-                        #section + ' settings', 
-                        #command = controlpanel.callback,
-                        #label = section + ' Settings')
-                #continue
-            #self.menubar.addcascademenu('Configuration', 
-                    #'%s Settings' % section, 
-                    #'%s Settings' % section, 
-                    #traverseSpec='z', 
-                    #tearoff = 0)
-            #subsections = settings[section].sections
-            #for subsection in subsections:
-                #self.menubar.addmenuitem('%s Settings' % section, 'command',
-                        #'%s Settings for %s' % (subsection, section),
-                        #command = controlpanel.callback,
-                        #label = '%s Settings' % subsection)
-        
-        ### Help menu
-        #self.menubar.addmenu('Help','Help and documentation', name='help')
-        #self.menubar.addmenuitem('Help','command',
-                #'User manual (opens in web browser)',
-                #command=Command(webbrowser.open, "http://pykeylogger.wiki."
-                            #"sourceforge.net/Usage_Instructions"),
-                #label='User manual')
-        #self.menubar.addmenuitem('Help','command',
-                #'About PyKeylogger',
-                #command=Command(AboutDialog, parent, 
-                            #title="About PyKeylogger"),
-                #label='About')
-        #self.menubar.addmenuitem('Help','command',
-                #'Request for your financial support',
-                #command=Command(SupportScreen, parent, 
-                            #title="Please Support PyKeylogger"),
-                #label='Support PyKeylogger!')
         
         # Configure the balloon to displays its status messages in the
         # message bar.
