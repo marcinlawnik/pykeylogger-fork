@@ -42,7 +42,7 @@ import version
 from configobj import ConfigObj, flatten_errors
 from validate import Validator
 from controlpanel import PyKeyloggerControlPanel
-from supportscreen import SupportScreen, ExpirationScreen
+#from supportscreen import SupportScreen, ExpirationScreen
 import Tkinter, tkMessageBox
 import myutils
 from Queue import Empty, Queue
