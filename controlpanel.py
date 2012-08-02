@@ -95,11 +95,11 @@ class PyKeyloggerControlPanel:
         textlabel.pack(padx = 2, pady = 2, expand='yes', fill='both')
         
         # Pretty logo display
-        photo = PhotoImage(file=os.path.join(myutils.get_main_dir(), 
-                                    version.name + "icon_big.gif"))
-        imagelabel = Label(self.root, image=photo, height=160, width=200)
-        imagelabel.photo = photo
-        imagelabel.pack()
+        #photo = PhotoImage(file=os.path.join(myutils.get_main_dir(), 
+                                    #version.name + "icon_big.gif"))
+        #imagelabel = Label(self.root, image=photo, height=160, width=200)
+        #imagelabel.photo = photo
+        #imagelabel.pack()
         
         # Create and pack the MessageBar.
         self.message_bar = Pmw.MessageBar(self.root,

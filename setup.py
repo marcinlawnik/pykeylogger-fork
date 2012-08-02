@@ -60,7 +60,7 @@ setup(
     ],
     options={
         "py2exe":{
-            "excludes": ["gtk"] # don't need this under windows
+            "excludes": ["gtk","mswsock.dll","powrprof.dll"] # don't need this under windows
         }
     }
     )
