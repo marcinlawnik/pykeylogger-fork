@@ -36,12 +36,7 @@ setup(
     data_files = [("",[version.name+".ini",
                         version.name+".val",
                         version.name+"icon.ico",
-                        version.name+"icon.svg",
-                        version.name+"icon_big.gif",
-                        "doc/CHANGELOG.TXT",
-                        "doc/LICENSE.txt",
-                        "doc/README.txt",
-                        "doc/TODO.txt"])],
+                        version.name+"icon.svg",])],
     # targets to build
     console = [
         {
