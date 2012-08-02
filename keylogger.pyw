@@ -66,7 +66,6 @@ class KeyLogger:
         self.parse_options() # stored in self.cmdoptions
         self.parse_config_file() # stored in self.settings
         self.parse_control_key()
-        self.NagscreenLogic()
         self.process_settings()
         _settings['settings'] = self.settings
         _cmdoptions['cmdoptions'] = self.cmdoptions
@@ -327,47 +326,6 @@ class KeyLogger:
             tkMessageBox.showerror("Errors in config file. Exiting.", 
                         '\n\n'.join(errortext))
             sys.exit(1)
-
-    def NagscreenLogic(self):
-        '''Show the nagscreen (or not).'''
-        
-        # Congratulations, you have found the nag control.
-        # See, that wasn't so hard, was it? :)
-        # While I have deliberately made it easy to stop all this nagging and
-        # expiration stuff here, and you are quite entitled to doing just that,
-        # I would like to take this final moment and encourage you once more to
-        # support the PyKeylogger project by making a donation.
-        
-        # Set this to False to get rid of all nagging.
-        NagMe = False
-        
-        if NagMe == True:
-            # first, show the support screen
-            root = Tkinter.Tk()
-            #root.geometry("100x100+200+200")
-            root.withdraw()
-            warn = SupportScreen(root, title="Please Support PyKeylogger")
-            root.destroy()
-            del(warn)
-            
-            # set the timer if first use
-            utfnd = self.settings['General']['_Usage Time Flag']
-            if myutils.password_recover(utfnd) == "firstuse":
-                self.settings['General']['_Usage Time Flag'] = \
-                   myutils.password_obfuscate(str(time.time()))
-                self.settings.write()
-            
-            # then, see if we have "expired"
-            utfnd = self.settings['General']['_Usage Time Flag']
-            if abs(time.time() - float(myutils.password_recover(utfnd))) > \
-               3600 * 24 * 4:
-                root = Tkinter.Tk()
-                #root.geometry("100x100+200+200")
-                root.withdraw()
-                warn = ExpirationScreen(root, title="PyKeylogger Has Expired")
-                root.destroy()
-                del(warn)
-                sys.exit()
 
 class ControlKeyHash:
     '''Encapsulates the control key dictionary.
