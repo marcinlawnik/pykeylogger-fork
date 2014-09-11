@@ -1,13 +1,14 @@
-import version
+from optparse import OptionParser
 import os
-import sys
 import re
 import shutil
 import subprocess
-from optparse import OptionParser
-
+import sys
 import zipfile
 import zlib
+
+import version
+
 
 class DistributionBuilderController:
     def __init__(self):
@@ -20,15 +21,15 @@ class DistributionBuilderController:
         if not self.cmdoptions.uploadonly:
         
             if self.cmdoptions.disttype in ['standard', 'all']:
-                print "Running standard build..."
+                print("Running standard build...")
                 db = DistributionBuilder('standard')
                 db.run()
             if self.cmdoptions.disttype in ['nonag', 'all']:
-                print "Running nonag build..."
+                print ("Running nonag build...")
                 db = DistributionBuilder('nonag')
                 db.run()
             if self.cmdoptions.disttype in ['stealth', 'all']:
-                print "Running stealth build..."
+                print ("Running stealth build...")
                 db = DistributionBuilder('stealth')
                 db.run()
                 

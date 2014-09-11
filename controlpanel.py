@@ -20,19 +20,21 @@
 ##
 ##############################################################################
 
-from Tkinter import *
-import tkSimpleDialog
-import tkMessageBox
-import Pmw
-from configobj import ConfigObj, flatten_errors
-from validate import Validator
-import myutils
-import webbrowser
-import sys
-import version
 import os.path
 import re
+import sys
+import webbrowser
+
+from configobj import ConfigObj, flatten_errors
+from validate import Validator
+
+import Pmw
+from Tkinter import *
 from myutils import _settings, _cmdoptions, _mainapp
+import myutils
+import tkMessageBox
+import tkSimpleDialog
+import version
 
 
 class PyKeyloggerControlPanel:

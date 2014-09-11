@@ -10,10 +10,12 @@
 from distutils.core import setup
 import sys
 
+import version
+
+
 if len(sys.argv) > 1 and sys.argv[1] == 'py2exe':
     import py2exe
 
-import version
 
 setup(
     # The first three parameters are not required, if at least a

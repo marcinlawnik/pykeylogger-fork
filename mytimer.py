@@ -1,6 +1,7 @@
 from threading import Thread, Event
 import time
 
+
 class MyTimer(Thread):
     """Call a function after a specified number of seconds. Repeat a specified number of times:
 

