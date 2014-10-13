@@ -4,7 +4,9 @@
 import math
 import string
 import sys
+
 import Tkinter
+
 
 _PI = math.pi
 _TWO_PI = _PI * 2

@@ -20,17 +20,6 @@
 ##
 ##############################################################################
 
-from threading import Thread, Event, RLock
-from myutils import (_settings, _cmdoptions, OnDemandRotatingFileHandler,
-    to_unicode)
-from Queue import Queue, Empty
-from timerthreads import *
-import os
-import os.path
-import logging
-import re
-
-
 '''Event classes have two stages. The thinking is as follows.
 
 The actual hooking routine needs to be /really/ fast, so as not to delay
@@ -45,6 +34,18 @@ stick the processed events into another queue.
 The second stage of processing can be slow. All it needs to do is
 massage the info it receives, and then write it out to disk
 in whatever format required.'''
+
+import logging
+import os
+import os.path
+import re
+from threading import Thread, Event, RLock
+
+from Queue import Queue, Empty
+from myutils import (_settings, _cmdoptions, OnDemandRotatingFileHandler,
+    to_unicode)
+from timerthreads import *
+
 
 __all__ = ['FirstStageBaseEventClass','SecondStageBaseEventClass']
 
@@ -82,7 +83,7 @@ class BaseEventClass(Thread):
     def task_function(self): # to be overridden in derived classes.
         try:
             event = self.q.get(timeout=0.05)
-            print event
+            print(event)
         except Empty:
             pass #let's keep iterating
         except:
@@ -115,7 +116,7 @@ class FirstStageBaseEventClass(BaseEventClass):
         '''Make sure we have the directory where we want to log'''
         try:
             os.makedirs(logdir)
-        except OSError, detail:
+        except OSError, detail :
             if(detail.errno==17):  #if directory already exists, swallow the error
                 pass
             else:

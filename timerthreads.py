@@ -20,18 +20,20 @@
 ##
 ##############################################################################
 
-from threading import Thread, Event
-import logging
-import time
-import re
-import sys
-import os.path
-import myutils
-from myutils import _settings, _cmdoptions, _mainapp
 import copy
-import zipfile
-import smtplib
 import ftplib
+import logging
+import os.path
+import re
+import smtplib
+import sys
+from threading import Thread, Event
+import time
+import zipfile
+
+from myutils import _settings, _cmdoptions, _mainapp
+import myutils
+
 
 # python 2.5 does some email things differently from python 2.4 and py2exe doesn't like it. 
 # hence, the version check.

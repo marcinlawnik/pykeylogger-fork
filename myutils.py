@@ -20,19 +20,21 @@
 ##
 ##############################################################################
 
-import zlib
 import base64
-import sys
-import os
-import os.path
 import imp
 import locale
-from validate import ValidateError, VdtValueError
+from logging.handlers import BaseRotatingHandler
+import os
+import os.path
 import re
+import sys
+import time
+import zlib
+
+from validate import ValidateError, VdtValueError
+
 
 # for the OnDemandRotatingFileHandler class
-from logging.handlers import BaseRotatingHandler
-import time
 try:
     import codecs
 except ImportError:

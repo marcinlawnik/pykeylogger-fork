@@ -20,18 +20,19 @@
 ##
 ##############################################################################
 
-from baseeventclasses import *
-
-from myutils import (_settings, _cmdoptions, OnDemandRotatingFileHandler,
-    to_unicode)
-from Queue import Queue, Empty
+import Image
+import copy
+import datetime
+import logging
 import os
 import os.path
-import logging
 import re
-import copy
-import Image
-import datetime
+
+from Queue import Queue, Empty
+from baseeventclasses import *
+from myutils import (_settings, _cmdoptions, OnDemandRotatingFileHandler,
+    to_unicode)
+
 
 if os.name == 'nt':
     import win32api, win32con, win32process
@@ -111,11 +112,11 @@ class OnClickImageCaptureFirstStage(FirstStageBaseEventClass):
                 image_data = Image.fromstring("RGBX", (cropbox.size.x, cropbox.size.y), raw.data, "raw", "BGRX").convert("RGB")
                 return image_data
             except error.BadDrawable:
-                print "bad drawable when attempting to get an image!  Closed the window?"
+                print ("bad drawable when attempting to get an image!  Closed the window?")
             except error.BadMatch:
-                print "bad match when attempting to get an image! probably specified an area outside the window (too big?)"
+                print ("bad match when attempting to get an image! probably specified an area outside the window (too big?)")
             except error.BadValue:
-                print "getimage: bad value error - tell me about this one, I've not managed to make it happen yet"
+                print ("getimage: bad value error - tell me about this one, I've not managed to make it happen yet")
             except:
                 print self.logger.debug('Error in getimage.',
                         exc_info = True)
